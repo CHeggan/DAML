@@ -1,0 +1,92 @@
+DAML Project Plan:
+
+Data:
+- Number of samples are same(theorefore cant use most frequant)
+- Missing Data removal 
+- Talk about shapes of data and ranges(describe())
+- Visualise data
+	-Correlation graphs(sns pairplot)
+	-talk about maybe use of PCA,is the underlying structure linear, if so would it help ?
+	-worth doing eventually anyway even if not linear and discussing the reason that it didnt help
+
+Data Preprocessing:
+	- Need to standardise/normalise data 
+	- then recheck values and make sure its appropriate 
+
+Evaluation:
+-Evaluation Metrics:
+	-Use f1 score, talk about what it is(eqn and description), can use sample weights
+	-use the weighted accuracy metric from daml resources
+	-why its good to use 
+	- Use confusion matrices, sklearn and the provided function out of daml file
+	- Final evaluation will need to be using training and valudation as we dont have the actual test labels
+-Training and validation
+	-Talk about why this is a good idea
+	- Preform the split and run classifiers in same way as iaml
+	-Train and evaluate on each fold, average f1 scores
+	-plot as a function of optimisable parameter
+
+Fitting:
+- create another baseline classifier for high level comparison
+	-use 'uniform' and most frequent
+	-see which one is better 
+	-report f1 score and accuracy 
+
+- Decision tree on high level variables 
+	-Train a tree for multi class
+	-optimise tree depth and talk about overfitting 
+	-Pick optimum tree depth and discuss why thats optimimum
+	-report f1 score and accuracy
+-Random Forest:
+	-train for multi class
+	-Optimise depth as well as number of trees
+	-Find best forest paramaters
+	-train best forest
+	-Report f1 and accuracy
+-KMeans Clustering on low level data:
+	- Talk about non deterministic
+	- Optimise Number clusters 
+	- Mutual information score(should see spike at k=2(bigger) and 3(smaller) then drop off)
+	- Maybe dont actualy predict and score
+
+-Deep neural net with scikit-learn:
+	-Both low and high level data, look for differences 
+	-look at unit 5 for help with NN
+	-Plot graphs of epoch/loss
+	-Optimse epochs 
+	-Talk about loss and epochs 
+	-Regularisation on accuracy
+	-Number of layers vs accuracy
+	-Neurons per layer vs accuracy
+###########################################################################################################
+
+-Deep nerual net on high level variables-Keras:
+	-same as previous 
+	-talk about differences
+-CNN-Keras:
+	-Create a simple CNN like done in unit 7, look at how the NN spits back out images and how well it is predicted
+	-Look more at CNN cp
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''
+-Auto Encoder-Keras:
+	- Similar to CNN cp and previous NN with epoch and Loss
+	- Talk about pooling and convolutions
+	- Talk about limitations
+	- Look at how it recreates images(obvs all fairly similar to talk about using a metric instead)
+	- Turn it into an anomaly detector using BCE, justify this use of BCE
+-Image Generation-Keras:
+	-Generate random arrays and pass into the auto encoder 
+	-Look at generated images and see how closeely they resmble(most likely not very so discuss why and how to improve)
+'''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+-PCA and re-runs:
+	- Need to apply pca to training and testing 
+	- Pca is only fit on the training sets, but transformed on both 
+	- Employ pca on all datasets
+	- repeat every good classifier
+	- Try pca low level on deep neural net
+	- Should have already optimised values required and can go straight into training/validation
+	- Did it make a difference? why?
+
+-Final Results:
+	- Want a table with the model name, f1 score, weighted acc, time to train and predict values
